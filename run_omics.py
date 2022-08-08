@@ -6,6 +6,8 @@ from torch.utils.data import TensorDataset
 from model.utils import *
 from sklearn.cross_decomposition import CCA
 import pandas as pd
+from pathlib import Path
+Path("log/dir").mkdir(parents=True, exist_ok=True)
 
 
 def main():
