@@ -97,13 +97,13 @@ def main(args):
             distsh.append(np.mean([amari(Wsh[i], D[i]) for i in range(m)]))
             print("shica", np.mean([amari(Wsh[i], D[i]) for i in range(m)]))
 
-            if args.shml == 1:
-                start = time.time()
-                Wshml, _, _ = shica_ml(X, init="shica_j", )
-                end = time.time()
-                distshml.append(np.mean([amari(Wshml[i], D[i]) for i in range(m)]))
-                print("shica-ml",np.mean([amari(Wshml[i], D[i]) for i in range(m)]))
-                timeshml.append(end - start)
+
+            start = time.time()
+            Wshml, _, _ = shica_ml(X, init="shica_j", )
+            end = time.time()
+            distshml.append(np.mean([amari(Wshml[i], D[i]) for i in range(m)]))
+            print("shica-ml",np.mean([amari(Wshml[i], D[i]) for i in range(m)]))
+            timeshml.append(end - start)
 
 
             start = time.time()
