@@ -9,7 +9,7 @@ from model.utils import find_ordering, amari
 import time
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epochs', default=2000, type=int, help='number of total epochs to run')
+    parser.add_argument('--epochs', default=5000, type=int, help='number of total epochs to run')
     parser.add_argument('--a', default=100, type=int,
                         help='number of sources')
     parser.add_argument('--m', default=2, type=int,
@@ -95,13 +95,14 @@ def main(args):
             distsh.append(np.mean([amari(Wsh[i], A[i]) for i in range(m)]))
             print("shica", np.mean([amari(Wsh[i], A[i]) for i in range(m)]))
 
-            
+            """
             start = time.time()
             Wshml, _, _ = shica_ml(X, init="shica_j", )
             end = time.time()
             distshml.append(np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
             print("shica-ml",np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
             timeshml.append(end - start)
+            """
 
             start = time.time()
             _, Wpermica, _ = infomax(X)
