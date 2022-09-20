@@ -94,15 +94,15 @@ def main(args):
             Wsh,_,_ = shica(X, use_scaling=False)
             end = time.time()
             timesh.append(end - start)
-            distsh.append(np.mean([amari(Wsh[i], A[i]) for i in range(m)]))
-            print("shica", np.mean([amari(Wsh[i], A[i]) for i in range(m)]))
+            distsh.append(np.mean([amari(Wsh[i], D[i]) for i in range(m)]))
+            print("shica", np.mean([amari(Wsh[i], D[i]) for i in range(m)]))
 
             if args.shml == 1:
                 start = time.time()
                 Wshml, _, _ = shica_ml(X, init="shica_j", )
                 end = time.time()
-                distshml.append(np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
-                print("shica-ml",np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
+                distshml.append(np.mean([amari(Wshml[i], D[i]) for i in range(m)]))
+                print("shica-ml",np.mean([amari(Wshml[i], D[i]) for i in range(m)]))
                 timeshml.append(end - start)
 
 
@@ -110,22 +110,22 @@ def main(args):
             _, Wpermica, _ = infomax(X)
             end = time.time()
             timeinfo.append(end - start)
-            distinfo.append(np.mean([amari(Wpermica[i], A[i]) for i in range(m)]))
-            print("infomax", np.mean([amari(Wpermica[i], A[i]) for i in range(m)]))
+            distinfo.append(np.mean([amari(Wpermica[i], D[i]) for i in range(m)]))
+            print("infomax", np.mean([amari(Wpermica[i], D[i]) for i in range(m)]))
 
             start = time.time()
             _, Wmica, _ = multiviewica(X)
             end = time.time()
             timemica.append(end - start)
-            distmica.append(np.mean([amari(Wmica[i], A[i]) for i in range(m)]))
-            print("multiview", np.mean([amari(Wmica[i], A[i]) for i in range(m)]))
+            distmica.append(np.mean([amari(Wmica[i], D[i]) for i in range(m)]))
+            print("multiview", np.mean([amari(Wmica[i], D[i]) for i in range(m)]))
 
             start = time.time()
             _,Wgroupica, _ = groupica(X )
             end = time.time()
             timegroup.append(end - start)
-            distgroup.append(np.mean([amari(Wgroupica[i], A[i]) for i in range(m)]))
-            print("groupica",np.mean([amari(Wgroupica[i], A[i]) for i in range(m)]))
+            distgroup.append(np.mean([amari(Wgroupica[i], D[i]) for i in range(m)]))
+            print("groupica",np.mean([amari(Wgroupica[i], D[i]) for i in range(m)]))
 
 
 
