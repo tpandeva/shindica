@@ -7,11 +7,13 @@ import geotorch
 import scipy
 
 class MSIICA(nn.Module):
-    def __init__(self, n_in, n_out, U=None):
+    def __init__(self, n_in, n_out, U=None, ortho=True):
         super().__init__()
         self.W = nn.Linear(n_in, n_out, bias=False)
-
-        geotorch.orthogonal(self.W, "weight", triv = "cayley")
+        if ortho:
+            geotorch.orthogonal(self.W, "weight")
+        else:
+            geotorch.sln(self.W, "weight")
         if U is not None:
             self.W.weight = U.contiguous()
 
