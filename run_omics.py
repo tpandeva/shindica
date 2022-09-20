@@ -13,8 +13,8 @@ Path("log/dir").mkdir(parents=True, exist_ok=True)
 def main():
     print(os.getcwd())
     seed = 0
-    a1 = 80 #total number of sources in dataset1
-    a2 = 80 #total number of sources in dataset2
+    a1 = 50 #total number of sources in dataset1
+    a2 = 50 #total number of sources in dataset2
     c = 40 #shared sources
 
     torch.manual_seed(seed)
