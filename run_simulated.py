@@ -28,6 +28,8 @@ def parse_args():
                         help='lambda hyperparameter')
     parser.add_argument('--fig', default=1, type=int,
                         help='type of experiment (2) is figure 1 and (3) is figure 3')
+    parser.add_argument('--shml', default=1, type=int,
+                        help='type of experiment (2) is figure 1 and (3) is figure 3')
     args = parser.parse_args()
     return args
 
@@ -95,14 +97,14 @@ def main(args):
             distsh.append(np.mean([amari(Wsh[i], A[i]) for i in range(m)]))
             print("shica", np.mean([amari(Wsh[i], A[i]) for i in range(m)]))
 
-            """
-            start = time.time()
-            Wshml, _, _ = shica_ml(X, init="shica_j", )
-            end = time.time()
-            distshml.append(np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
-            print("shica-ml",np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
-            timeshml.append(end - start)
-            """
+            if args.shml == 1:
+                start = time.time()
+                Wshml, _, _ = shica_ml(X, init="shica_j", )
+                end = time.time()
+                distshml.append(np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
+                print("shica-ml",np.mean([amari(Wshml[i], A[i]) for i in range(m)]))
+                timeshml.append(end - start)
+
 
             start = time.time()
             _, Wpermica, _ = infomax(X)
