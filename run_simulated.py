@@ -10,11 +10,11 @@ import time
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--epochs', default=2000, type=int, help='number of total epochs to run')
-    parser.add_argument('--a', default=5, type=int,
+    parser.add_argument('--a', default=100, type=int,
                         help='number of sources')
     parser.add_argument('--m', default=2, type=int,
                         help='number of views')
-    parser.add_argument('--c', default=5, type=int,
+    parser.add_argument('--c', default=50, type=int,
                         help='number of shared sources')
     parser.add_argument('--noise', default=0, type=float,
                         help='noise std')
@@ -26,6 +26,8 @@ def parse_args():
                         help='seed')
     parser.add_argument('--lam', default=1, type=float,
                         help='lambda hyperparameter')
+    parser.add_argument('--fig', default=1, type=int,
+                        help='type of experiment (2) is figure 1 and (3) is figure 3')
     args = parser.parse_args()
     return args
 
@@ -129,7 +131,7 @@ if __name__ == '__main__':
     args = parse_args()
     print(args)
     res= main(args)
-    file = open(f"log/out_{args.m}_{args.a}_{args.c}_lam_{args.lam}.pickle","wb")
+    file = open(f"log/out_{args.m}_{args.a}_{args.c}_lam_{args.lam}_fig_{args.fig}.pickle","wb")
     pickle.dump(res, file)
     file.close()
 

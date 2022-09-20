@@ -1,6 +1,6 @@
 #!/bin/bash
 for i in  10 20 30 40 50
 do
-      python run_simulated.py --c $i --lam 1 --a $i --m 10 --n 1000 --isRandom
+      python run_simulated.py --c $i --lam 1 --a $i --m 10 --n 1000 --isRandom --fig 3
       wait
 done
