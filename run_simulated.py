@@ -9,7 +9,7 @@ from model.utils import find_ordering, amari
 import time
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epochs', default=5000, type=int, help='number of total epochs to run')
+    parser.add_argument('--epochs', default=2000, type=int, help='number of total epochs to run')
     parser.add_argument('--a', default=100, type=int,
                         help='number of sources')
     parser.add_argument('--m', default=2, type=int,
