@@ -1,5 +1,5 @@
 #!/bin/bash
-for i in  50 60
+for i in  70 80
 do
       python run_simulated.py --c $i --lam 1 --a 100 --m 2 --n 1000 --noise 0 --fig 2 --shml 2
       wait
