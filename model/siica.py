@@ -174,15 +174,20 @@ def _siica_si_main(X, n_components, c, max_iter = 10,init=True, approx=True, hyp
                 optim.zero_grad()
 
                 s0 = model[0](x_batch[0])
-                sc = s0.view(1, *s0.shape)
-                loss = torch.sum(torch.log(torch.cosh(s0)))
+                sc = s0[:,:c].view(1, -1,c)
+                loss = torch.sum(torch.log(torch.cosh(s0[:,c:])))
+                m = torch.mean(sc, dim=0)
                 for i in range(1, D):
+                    l = 1 if i+1==D else 0
                     si = model[i](x_batch[i])
-                    loss += torch.sum(torch.log(torch.cosh(si)))
+                    loss += torch.sum(torch.log(torch.cosh(si[:,c:])))
 
-                    loss -= hyper * torch.trace(si[:,:c].T @ torch.mean(sc, dim=0)[:,:c])
-                    sc = torch.cat((sc, si.view(1, *si.shape)))
+                   # loss += l*torch.sum(torch.log(torch.cosh(m)))
+                    loss -= hyper * torch.trace(si[:,:c].T @ m)
+                    sc = torch.cat((sc, (si[:,:c]).view(1, -1,c)))
+                    m = torch.sum(sc, dim=0)
 
+                loss += torch.sum(torch.log(torch.cosh(m)))
                 loss.backward()
                 return loss
 
