@@ -38,7 +38,7 @@ def siica(
 def _siica_main(X,n_components, max_iter=10, hyper=None, init=True):
     if hyper is None:
         hyper=1
-    device = torch.device('cpu')
+    device = torch.device('cuda:0')
 
     D, p, n = X.shape
     X_copy=list()
@@ -120,7 +120,7 @@ def _siica_main(X,n_components, max_iter=10, hyper=None, init=True):
 def _siica_si_main(X, n_components, c, max_iter = 10,init=True, approx=True, hyper=None):
     if hyper is None:
         hyper=1
-    device = torch.device('cpu')
+    device = torch.device('cuda:0')
     D, p, n = X.shape
     X_copy=list()
 
