@@ -89,7 +89,7 @@ def main(args):
             print("ShIndICA", np.mean([amari(W[i], D[i]) for i in range(m)]))
             distsi.append(np.mean([amari(W[i], D[i]) for i in range(m)]))
 
-            """
+            
             start = time.time()
             Wsh,_,_ = shica(X, use_scaling=False)
             end = time.time()
@@ -125,7 +125,7 @@ def main(args):
             end = time.time()
             timegroup.append(end - start)
             distgroup.append(np.mean([amari(Wgroupica[i], D[i]) for i in range(m)]))
-            print("groupica",np.mean([amari(Wgroupica[i], D[i]) for i in range(m)]))"""
+            print("groupica",np.mean([amari(Wgroupica[i], D[i]) for i in range(m)]))
 
 
 
