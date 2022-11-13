@@ -12,13 +12,13 @@ The file `run_simulated.py` is the main file for all synthetic experiments. For 
 
 `python run_simulated.py --m 10 --a 20 --c 5 --n 1000`
 
-will run a benchmark experiment for a dataset generated according to a model with 10 views 20 sources per view 5 of which are shared. To get the results generated Fig 2 run
+will run a benchmark experiment for a dataset generated according to a model with 10 views 20 sources per view 5 of which are shared. The results that are saved under the file `"log/out_{args.m}_{args.a}_{args.c}_lam_{args.lam}_fig_{args.fig}.pickle"` contain Amari distance and compute time for each method.  To get the results generated Fig 3a run
 
-`./run_fig2.ssh`
+`./run_fig3a.ssh`
 
-For Figure 3
+For Figure 3b
 
-`./run_fig3.ssh`
+`./run_fig3b.ssh`
 
 ### Omics Data Fusion experiment
 To fit our model to the omics data please run 
