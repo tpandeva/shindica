@@ -134,7 +134,7 @@ if __name__ == '__main__':
     args = parse_args()
     print(args)
     res= main(args)
-    file = open(f"log/out_{args.m}_{args.a}_{args.c}_lam_{args.lam}_fig_{args.fig}.pickle","wb")
+    file = open(f"log/out_{args.m}_{args.a}_{args.c}_lam_{args.lam}_noise_{args.noise}.pickle","wb")
     pickle.dump(res, file)
     file.close()
 
